@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>whispers_photography_ — Simeon Kolev</title>
+  <meta name="description" content="Modern photography portfolio — weddings, portraits, events. Simeon Kolev." />
+  <meta name="theme-color" content="#0f0c0a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== MOBILE-FIRST RESET ===== */
+    :root{
+      --bg:#0f0c0a;--bg-2:#171310;--panel:#14110e;--glass:#14110ed9;--text:#ffffff;--muted:#e4d7c8;--line:#2c251f;
+      --amber:#d79a63;--sand:#f0d9bf;--radius:18px;--shadow:0 20px 60px rgba(0,0,0,.5);
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),var(--bg-2));color:var(--text);font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.7;overflow-x:hidden}
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1200px;margin:0 auto;padding:0 16px}
+    @media(min-width:768px){.container{padding:0 24px}}
+
+    /* ===== TYPO ===== */
+    h1,h2,h3{font-family:"Playfair Display",serif;line-height:1.2;margin:0 0 10px}
+    h1{font-size:clamp(2rem,8vw,3.8rem)}
+    h2{font-size:clamp(1.5rem,4.5vw,2.4rem)}
+    h3{font-size:clamp(1.1rem,3.8vw,1.5rem)}
+    p,li,button,a,small{font-size:clamp(.98rem,3.6vw,1.05rem);word-break:break-word;overflow-wrap:anywhere}
+
+    /* ===== NAV ===== */
+    .nav{position:sticky;top:0;z-index:50;background:#14110ee6;border-bottom:1px solid var(--line);backdrop-filter:saturate(120%) blur(6px)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    .brand{font-family:"Playfair Display",serif;font-weight:700;letter-spacing:.4px;font-size:1.05rem;white-space:nowrap}
+    .nav-links{display:none;gap:16px}
+    .cta{display:none;gap:10px}
+    .btn{display:inline-block;border-radius:999px;border:1px solid var(--line);padding:10px 14px;background:#1d1813;box-shadow:var(--shadow);font-weight:700}
+    .btn.primary{background:linear-gradient(180deg,#f0caa4,#d79a63);color:#2b2219;border:none}
+    .burger{display:inline-flex;flex-direction:column;gap:4px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:#1b1713}
+    .burger span{width:22px;height:2px;background:#f8f5f1;display:block}
+    #menu{display:none;position:fixed;left:12px;right:12px;top:58px;background:#15110e;border:1px solid var(--line);border-radius:14px;padding:10px;z-index:60}
+    #menu a{display:block;padding:10px 12px;border-radius:10px}
+    #menu.open{display:block}
+    @media(min-width:880px){
+      .burger,#menu{display:none}
+      .nav-links,.cta{display:flex}
+    }
+
+    /* ===== HERO ===== */
+    .hero{position:relative;min-height:66vh;display:grid;place-items:center;text-align:center;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:
+      linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.6)),
+      url('https://www.dropbox.com/scl/fi/6xqo2c9e9tj2ftcatluxf/DSC00718.jpg?rlkey=upujy1da94jmepp7p2if50uj0&raw=1') center/cover no-repeat;
+      filter:saturate(1.02);
+      transform:translateZ(0);
+      will-change:transform;
+    }
+    .hero-inner{position:relative;padding:54px 0 72px}
+    .kicker{text-transform:uppercase;letter-spacing:.22em;color:var(--sand);font-size:.95rem}
+    .sub{color:#f1e6d8;max-width:860px;margin:0 auto 18px;padding:0 8px}
+
+    /* ===== SECTIONS ===== */
+    section{padding:56px 0;border-top:1px solid var(--line)}
+    .card{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card.pad{padding:16px}
+    .muted{color:var(--muted)}
+
+    /* ===== SERVICES ===== */
+    .grid{display:grid;gap:14px}
+    @media(min-width:900px){.grid-2{grid-template-columns:1.2fr 1fr}.grid-3{grid-template-columns:repeat(3,1fr)}}
+
+    /* ===== PORTFOLIO (stable grid) ===== */
+    .toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{padding:9px 12px;border-radius:999px;border:1px solid var(--line);background:#1a1612;color:#f7efe5;font-weight:700}
+    .chip.active{border-color:var(--amber);color:#2b2219;background:linear-gradient(180deg,#f0caa4,#d79a63)}
+    .grid-photos{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:520px){.grid-photos{grid-template-columns:1fr 1fr}}
+    @media(min-width:980px){.grid-photos{grid-template-columns:1fr 1fr 1fr}}
+    .shot{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#0f0c0a;position:relative}
+    .shot img{width:100%;height:auto;display:block;aspect-ratio:4/5;object-fit:cover}
+    .shot figcaption{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.38);backdrop-filter:blur(3px);padding:6px 9px;border-radius:10px;color:#eee;font-size:.92rem}
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:70;padding:10px}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:96vw;max-height:86vh;border-radius:14px}
+    .lightbox .close{position:absolute;top:12px;right:16px;font-size:30px;cursor:pointer}
+    .lightbox .arrow{position:absolute;top:50%;transform:translateY(-50%);font-size:36px;cursor:pointer;padding:8px}
+    .lightbox .prev{left:10px}.lightbox .next{right:10px}
+
+    /* ===== CONTACT ===== */
+    .field{border:1px solid var(--line);border-radius:14px;background:#201a16;padding:10px}
+    .field input,.field textarea{width:100%;background:transparent;color:var(--text);border:none;outline:none;font:inherit}
+
+    /* ===== FOOTER ===== */
+    footer{background:#0c0907;border-top:1px solid var(--line);padding:28px 0;color:#fff;font-size:.95rem}
+    footer .muted{color:#e0d6ca}
+
+    /* ===== ACCESSIBILITY ===== */
+    :focus-visible{outline:2px solid #78c7c0;outline-offset:3px;border-radius:10px}
+
+    .live-pill {
+      display:flex;align-items:center;gap:8px;
+      border:1px solid var(--line);
+      background:#1b1713;
+      color:#e7d9c8;
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:.9rem;
+    }
+    .dot {
+      width:8px;height:8px;border-radius:50%;
+      background:#2ecc71;
+      box-shadow:0 0 0 6px rgba(46,204,113,.12);
+    }
+
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav" role="navigation" aria-label="Main">
+    <div class="container nav-inner">
+      <div class="brand"><a href="#home" aria-label="Home">whispers_<em>photography_</em></a></div>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#about">About</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="cta">
+        <div class="live-pill"><span class="dot"></span><span id="live">Now: 34 people viewing</span></div>
+        <a class="btn" target="_blank" href="https://instagram.com/whispers_photography_">Instagram</a>
+        <a class="btn primary" href="#contact">Book a session</a>
+      </div>
+    </div>
+    <div id="menu" role="menu" aria-label="Mobile menu">
+      <a href="#portfolio" role="menuitem">Portfolio</a>
+      <a href="#about" role="menuitem">About</a>
+      <a href="#process" role="menuitem">Process</a>
+      <a href="#contact" role="menuitem">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-inner container">
+      <div class="kicker">through the lens of <strong style="font-size:1.4em;background:linear-gradient(180deg,#fff,#e9dbc9);-webkit-background-clip:text;background-clip:text;color:transparent">SIMEON KOLEV</strong></div>
+      <h1>whispers_photography_</h1>
+      <p class="sub">Warm, editorial style — weddings, portraits, events. Calm presence, honest moments, color that ages beautifully.</p>
+      <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
+        <a class="btn primary" href="#portfolio">View portfolio</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container grid grid-3">
+      <div class="card pad"><h3>💍 Weddings</h3><p class="muted">Full story: details, emotion, elegant portraits.</p></div>
+      <div class="card pad"><h3>🧑‍🦰 Portraits</h3><p class="muted">Lifestyle, editorial, headshots. Location & styling guidance.</p></div>
+      <div class="card pad"><h3>🎤 Events / Commercial</h3><p class="muted">Brand narratives, concerts, corporate. Web & print licensing.</p></div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="toolbar">
+        <h2>Portfolio</h2>
+        <div class="filters" id="filters" role="tablist" aria-label="Filter portfolio">
+          <button class="chip active" data-f="all" role="tab" aria-selected="true">All</button>
+          <button class="chip" data-f="wedding" role="tab">Weddings</button>
+          <button class="chip" data-f="portrait" role="tab">Portraits</button>
+          <button class="chip" data-f="event" role="tab">Events</button>
+        </div>
+      </div>
+      <div class="grid-photos" id="grid">
+        <figure class="shot" data-tags="portrait">
+          <img loading="lazy" decoding="async"
+               src="https://www.dropbox.com/scl/fi/8scpbgu4jqwjhm8smstu1/da-13.jpg?rlkey=gek3jk733b2zyhzmyqtj6dzh4&raw=1"
+               alt="Warm portrait" width="1600" height="2000">
+          <figcaption>Warm portrait</figcaption>
+        </figure>
+        <figure class="shot" data-tags="portrait">
+          <img loading="lazy" decoding="async"
+               src="https://www.dropbox.com/scl/fi/uwulrok2a0k3c9opzmq0v/da-16.jpg?rlkey=ulh6afuu1hqahhs7gl6ylnhwl&raw=1"
+               alt="Golden-hour glow" width="1600" height="2000">
+          <figcaption>Golden-hour glow</figcaption>
+        </figure>
+        <figure class="shot" data-tags="event">
+          <img loading="lazy" decoding="async"
+               src="https://www.dropbox.com/scl/fi/6xqo2c9e9tj2ftcatluxf/DSC00718.jpg?rlkey=upujy1da94jmepp7p2if50uj0&raw=1"
+               alt="Editorial frame" width="2000" height="1333">
+          <figcaption>Editorial frame</figcaption>
+        </figure>
+        <figure class="shot" data-tags="event">
+          <img loading="lazy" decoding="async"
+               src="https://www.dropbox.com/scl/fi/ee27fkxn6num3b6xzqqcw/DSC00773.jpg?rlkey=y30r4dsbsa8nh57bpog3ym2p4&raw=1"
+               alt="Intimate detail" width="2000" height="1333">
+          <figcaption>Intimate detail</figcaption>
+        </figure>
+        <figure class="shot" data-tags="wedding">
+          <img loading="lazy" decoding="async"
+               src="https://www.dropbox.com/scl/fi/96g9ctjvoad2b0vs06480/DSC00767-2.jpg?rlkey=zs7las8hbvy7p0406l752v0rn&raw=1"
+               alt="Timeless tones" width="2000" height="1333">
+          <figcaption>Timeless tones</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container grid grid-2">
+      <div class="card pad">
+        <h2>About</h2>
+        <p class="muted">I’m Simeon — based in Bulgaria, working across the EU. Natural light, gentle colors, and true moments.</p>
+        <ul class="muted">
+          <li>Color-true workflow & archival quality</li>
+          <li>Curated galleries & quick preview sets</li>
+          <li>Travel available • EN / BG</li>
+        </ul>
+      </div>
+      <div class="card pad">
+        <h3 style="margin-top:0">FAQ</h3>
+        <p class="muted"><strong>How fast do we get photos?</strong><br> First previews within 48h. Full gallery depends on project size.</p>
+        <p class="muted"><strong>Do you offer prints?</strong><br> Yes — fine-art prints and albums on request.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+      <h2>Process</h2>
+      <div class="grid" style="grid-template-columns:1fr;gap:12px">
+        <div class="card pad"><strong>1. Discovery</strong><br><span class="muted">Date, vibe, locations, must-haves.</span></div>
+        <div class="card pad"><strong>2. Planning</strong><br><span class="muted">Timing, light windows, simple shot list.</span></div>
+        <div class="card pad"><strong>3. Shoot</strong><br><span class="muted">Calm presence; guidance when needed.</span></div>
+        <div class="card pad"><strong>4. Delivery</strong><br><span class="muted">Preview in 48h • Final gallery web & print ready.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container grid grid-2">
+      <div class="card pad">
+        <h2>Contact</h2>
+        <p class="muted">Email: <a href="mailto:monikolev10@abv.bg">monikolev10@abv.bg</a><br>Instagram: <a target="_blank" href="https://instagram.com/whispers_photography_">@whispers_photography_</a></p>
+        <p class="muted">Share your date, location, and the feeling you want captured — I’ll reply quickly.</p>
+      </div>
+      <form class="card pad" action="mailto:monikolev10@abv.bg" method="post" enctype="text/plain">
+        <div class="field"><label>Name<br><input name="name" required placeholder="Your name"></label></div>
+        <div class="field"><label>Email<br><input name="email" type="email" required placeholder="you@example.com"></label></div>
+        <div class="field"><label>Message<br><textarea name="message" rows="5" placeholder="Tell me about your idea…"></textarea></label></div>
+        <button class="btn primary" type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>© <span id="y">2025</span> whispers_photography_</div>
+      <div>through the lens of <strong>SIMEON KOLEV</strong></div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const burger=document.getElementById('burger');
+    const menu=document.getElementById('menu');
+    burger.addEventListener('click',()=>{
+      const open=menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+    });
+    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+
+    // Filters
+    const chips=[...document.querySelectorAll('.chip')];
+    chips.forEach(c=>c.addEventListener('click',()=>{
+      chips.forEach(x=>x.classList.remove('active')); c.classList.add('active');
+      const f=c.dataset.f; document.querySelectorAll('#grid .shot').forEach(s=>{
+        const tags=s.dataset.tags||''; s.style.display=(f==='all'||tags.includes(f))? 'block':'none';
+      });
+    }));
+
+    // Lightbox
+    const lb=document.createElement('div');lb.className='lightbox';lb.innerHTML=`<span class="close" aria-label="Close">✕</span><span class="arrow prev" aria-label="Previous">‹</span><img alt="Expanded image"/><span class="arrow next" aria-label="Next">›</span>`;document.body.appendChild(lb);
+    const imgs=[...document.querySelectorAll('#grid img')];let i=0;const show=idx=>{i=(idx+imgs.length)%imgs.length;lb.querySelector('img').src=imgs[i].src;lb.classList.add('open')};
+    imgs.forEach((img,idx)=>img.addEventListener('click',()=>show(idx)));
+    const close=()=>lb.classList.remove('open');lb.querySelector('.close').onclick=close;lb.onclick=e=>{if(e.target===lb) close()};
+    lb.querySelector('.prev').onclick=()=>show(i-1);lb.querySelector('.next').onclick=()=>show(i+1);
+    window.addEventListener('keydown',e=>{if(!lb.classList.contains('open')) return; if(e.key==='Escape') close(); if(e.key==='ArrowLeft') show(i-1); if(e.key==='ArrowRight') show(i+1)});
+
+    
+    // Live viewers counter
+    const liveEl = document.getElementById('live');
+    function updateLive(){
+      const n = 31 + Math.floor(Math.random()*29); // 31..59
+      liveEl.textContent = `Now: ${n} people viewing`;
+    }
+    updateLive();
+    setInterval(updateLive, 15000);
+
+    // Year
+    document.getElementById('y').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
