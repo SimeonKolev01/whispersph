@@ -50,13 +50,10 @@
 
     /* ===== HERO ===== */
     .hero{position:relative;min-height:66vh;display:grid;place-items:center;text-align:center;overflow:hidden}
-    .hero-bg{position:absolute;inset:0;background:
-      linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.6)),
-      url('https://www.dropbox.com/scl/fi/6xqo2c9e9tj2ftcatluxf/DSC00718.jpg?rlkey=upujy1da94jmepp7p2if50uj0&raw=1') center/cover no-repeat;
-      filter:saturate(1.02);
-      transform:translateZ(0);
-      will-change:transform;
-    }
+    .hero-layers{position:absolute;inset:0;perspective:1000px;transform-style:preserve-3d}
+    .hero-bg{position:absolute;inset:0;will-change:transform;background-position:center;background-size:cover;background-repeat:no-repeat;transform:translateZ(0)}
+    .hero-bg.img{background-image:url('https://www.dropbox.com/scl/fi/6xqo2c9e9tj2ftcatluxf/DSC00718.jpg?rlkey=upujy1da94jmepp7p2if50uj0&raw=1');filter:saturate(1.02)}
+    .hero-bg.overlay{background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.6))}
     .hero-inner{position:relative;padding:54px 0 72px}
     .kicker{text-transform:uppercase;letter-spacing:.22em;color:var(--sand);font-size:.95rem}
     .sub{color:#f1e6d8;max-width:860px;margin:0 auto 18px;padding:0 8px}
@@ -149,7 +146,10 @@
 
   <!-- HERO -->
   <header id="home" class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-layers" aria-hidden="true">
+      <div class="hero-bg img" data-depth="60"></div>
+      <div class="hero-bg overlay" data-depth="20"></div>
+    </div>
     <div class="hero-inner container">
       <div class="kicker">through the lens of <strong style="font-size:1.4em;background:linear-gradient(180deg,#fff,#e9dbc9);-webkit-background-clip:text;background-clip:text;color:transparent">SIMEON KOLEV</strong></div>
       <h1>whispers_photography_</h1>
@@ -302,7 +302,39 @@
     lb.querySelector('.prev').onclick=()=>show(i-1);lb.querySelector('.next').onclick=()=>show(i+1);
     window.addEventListener('keydown',e=>{if(!lb.classList.contains('open')) return; if(e.key==='Escape') close(); if(e.key==='ArrowLeft') show(i-1); if(e.key==='ArrowRight') show(i+1)});
 
-    
+
+    // Parallax hero background
+    const motionOK = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    const heroLayers = document.querySelectorAll('.hero-bg');
+    function applyParallax(x, y){
+      heroLayers.forEach(layer=>{
+        const depth=parseFloat(layer.dataset.depth)||0;
+        const z=(x+y)*depth;
+        layer.style.transform=`translateZ(${z}px)`;
+      });
+    }
+    function onPointer(e){
+      const x=e.clientX/window.innerWidth-.5;
+      const y=e.clientY/window.innerHeight-.5;
+      applyParallax(x,y);
+    }
+    function onOrientation(e){
+      const x=(e.gamma||0)/45;
+      const y=(e.beta||0)/45;
+      applyParallax(x,y);
+    }
+    function enableParallax(){
+      window.addEventListener('mousemove',onPointer);
+      window.addEventListener('deviceorientation',onOrientation);
+    }
+    function disableParallax(){
+      window.removeEventListener('mousemove',onPointer);
+      window.removeEventListener('deviceorientation',onOrientation);
+      heroLayers.forEach(l=>l.style.transform='translateZ(0)');
+    }
+    if(motionOK.matches) enableParallax();
+    motionOK.addEventListener('change',e=>e.matches?enableParallax():disableParallax());
+
     // Live viewers counter
     const liveEl = document.getElementById('live');
     function updateLive(){
