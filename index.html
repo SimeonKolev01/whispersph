@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>whispers_photography_ — Simeon Kolev</title>
   <meta name="description" content="Modern photography portfolio — weddings, portraits, events. Simeon Kolev." />
-  <meta name="theme-color" content="#0f0c0a" />
+  <meta name="theme-color" content="#0e0e10" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
   <style>
     /* ===== MOBILE-FIRST RESET ===== */
     :root{
-      --bg:#0f0c0a;--bg-2:#171310;--panel:#14110e;--glass:#14110ed9;--text:#ffffff;--muted:#e4d7c8;--line:#2c251f;
-      --amber:#d79a63;--sand:#f0d9bf;--radius:18px;--shadow:0 20px 60px rgba(0,0,0,.5);
+      --bg:#0e0e10;--bg-2:#17181a;--panel:#1d1e21;--glass:#1d1e21d9;--text:#f5f5f6;--muted:#d1c5b6;--line:#32363c;
+      --amber:#cfa86b;--sand:#f5e8d5;--radius:18px;--shadow:0 20px 60px rgba(0,0,0,.5);
     }
     *,*::before,*::after{box-sizing:border-box}
     html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
@@ -31,16 +31,16 @@
     p,li,button,a,small{font-size:clamp(.98rem,3.6vw,1.05rem);word-break:break-word;overflow-wrap:anywhere}
 
     /* ===== NAV ===== */
-    .nav{position:sticky;top:0;z-index:50;background:#14110ee6;border-bottom:1px solid var(--line);backdrop-filter:saturate(120%) blur(6px)}
+    .nav{position:sticky;top:0;z-index:50;background:#1d1e21e6;border-bottom:1px solid var(--line);backdrop-filter:saturate(120%) blur(6px)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
     .brand{font-family:"Playfair Display",serif;font-weight:700;letter-spacing:.4px;font-size:1.05rem;white-space:nowrap}
     .nav-links{display:none;gap:16px}
     .cta{display:none;gap:10px}
-    .btn{display:inline-block;border-radius:999px;border:1px solid var(--line);padding:10px 14px;background:#1d1813;box-shadow:var(--shadow);font-weight:700}
-    .btn.primary{background:linear-gradient(180deg,#f0caa4,#d79a63);color:#2b2219;border:none}
-    .burger{display:inline-flex;flex-direction:column;gap:4px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:#1b1713}
-    .burger span{width:22px;height:2px;background:#f8f5f1;display:block}
-    #menu{display:none;position:fixed;left:12px;right:12px;top:58px;background:#15110e;border:1px solid var(--line);border-radius:14px;padding:10px;z-index:60}
+    .btn{display:inline-block;border-radius:999px;border:1px solid var(--line);padding:10px 14px;background:var(--panel);box-shadow:var(--shadow);font-weight:700}
+    .btn.primary{background:linear-gradient(180deg,var(--sand),var(--amber));color:#2b2219;border:none}
+    .burger{display:inline-flex;flex-direction:column;gap:4px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+    .burger span{width:22px;height:2px;background:var(--text);display:block}
+    #menu{display:none;position:fixed;left:12px;right:12px;top:58px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px;z-index:60}
     #menu a{display:block;padding:10px 12px;border-radius:10px}
     #menu.open{display:block}
     @media(min-width:880px){
@@ -56,7 +56,7 @@
     .hero-bg.overlay{background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.6))}
     .hero-inner{position:relative;padding:54px 0 72px}
     .kicker{text-transform:uppercase;letter-spacing:.22em;color:var(--sand);font-size:.95rem}
-    .sub{color:#f1e6d8;max-width:860px;margin:0 auto 18px;padding:0 8px}
+    .sub{color:var(--muted);max-width:860px;margin:0 auto 18px;padding:0 8px}
 
     /* ===== SECTIONS ===== */
     section{padding:56px 0;border-top:1px solid var(--line)}
@@ -71,14 +71,14 @@
     /* ===== PORTFOLIO (stable grid) ===== */
     .toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
     .filters{display:flex;gap:8px;flex-wrap:wrap}
-    .chip{padding:9px 12px;border-radius:999px;border:1px solid var(--line);background:#1a1612;color:#f7efe5;font-weight:700}
-    .chip.active{border-color:var(--amber);color:#2b2219;background:linear-gradient(180deg,#f0caa4,#d79a63)}
+    .chip{padding:9px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-weight:700}
+    .chip.active{border-color:var(--amber);color:#2b2219;background:linear-gradient(180deg,var(--sand),var(--amber))}
     .grid-photos{display:grid;grid-template-columns:1fr;gap:12px}
     @media(min-width:520px){.grid-photos{grid-template-columns:1fr 1fr}}
     @media(min-width:980px){.grid-photos{grid-template-columns:1fr 1fr 1fr}}
-    .shot{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#0f0c0a;position:relative}
+    .shot{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--bg);position:relative}
     .shot img{width:100%;height:auto;display:block;aspect-ratio:4/5;object-fit:cover}
-    .shot figcaption{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.38);backdrop-filter:blur(3px);padding:6px 9px;border-radius:10px;color:#eee;font-size:.92rem}
+    .shot figcaption{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.38);backdrop-filter:blur(3px);padding:6px 9px;border-radius:10px;color:var(--text);font-size:.92rem}
 
     /* ===== LIGHTBOX ===== */
     .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:70;padding:10px}
@@ -89,12 +89,12 @@
     .lightbox .prev{left:10px}.lightbox .next{right:10px}
 
     /* ===== CONTACT ===== */
-    .field{border:1px solid var(--line);border-radius:14px;background:#201a16;padding:10px}
+    .field{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:10px}
     .field input,.field textarea{width:100%;background:transparent;color:var(--text);border:none;outline:none;font:inherit}
 
     /* ===== FOOTER ===== */
-    footer{background:#0c0907;border-top:1px solid var(--line);padding:28px 0;color:#fff;font-size:.95rem}
-    footer .muted{color:#e0d6ca}
+    footer{background:var(--bg);border-top:1px solid var(--line);padding:28px 0;color:var(--text);font-size:.95rem}
+    footer .muted{color:var(--muted)}
 
     /* ===== ACCESSIBILITY ===== */
     :focus-visible{outline:2px solid #78c7c0;outline-offset:3px;border-radius:10px}
@@ -102,8 +102,8 @@
     .live-pill {
       display:flex;align-items:center;gap:8px;
       border:1px solid var(--line);
-      background:#1b1713;
-      color:#e7d9c8;
+      background:var(--panel);
+      color:var(--muted);
       border-radius:999px;
       padding:6px 10px;
       font-size:.9rem;
@@ -151,7 +151,7 @@
       <div class="hero-bg overlay" data-depth="20"></div>
     </div>
     <div class="hero-inner container">
-      <div class="kicker">through the lens of <strong style="font-size:1.4em;background:linear-gradient(180deg,#fff,#e9dbc9);-webkit-background-clip:text;background-clip:text;color:transparent">SIMEON KOLEV</strong></div>
+      <div class="kicker">through the lens of <strong style="font-size:1.4em;background:linear-gradient(180deg,#fff,var(--sand));-webkit-background-clip:text;background-clip:text;color:transparent">SIMEON KOLEV</strong></div>
       <h1>whispers_photography_</h1>
       <p class="sub">Warm, editorial style — weddings, portraits, events. Calm presence, honest moments, color that ages beautifully.</p>
       <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
