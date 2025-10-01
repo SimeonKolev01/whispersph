@@ -24,11 +24,11 @@
     @media(min-width:768px){.container{padding:0 24px}}
 
     /* ===== TYPO ===== */
-    h1,h2,h3{font-family:"Playfair Display",serif;line-height:1.2;margin:0 0 10px}
+    h1,h2,h3{font-family:"Playfair Display",serif;line-height:1.2;margin:0 0 10px;text-shadow:0 3px 4px rgba(0,0,0,.5)}
     h1{font-size:clamp(2rem,8vw,3.8rem)}
     h2{font-size:clamp(1.5rem,4.5vw,2.4rem)}
     h3{font-size:clamp(1.1rem,3.8vw,1.5rem)}
-    p,li,button,a,small{font-size:clamp(.98rem,3.6vw,1.05rem);word-break:break-word;overflow-wrap:anywhere}
+    p,li,button,a,small{font-size:clamp(.98rem,3.6vw,1.05rem);word-break:break-word;overflow-wrap:anywhere;text-shadow:0 1px 2px rgba(0,0,0,.45)}
 
     /* ===== NAV ===== */
     .nav{position:sticky;top:0;z-index:50;background:#14110ee6;border-bottom:1px solid var(--line);backdrop-filter:saturate(120%) blur(6px)}
@@ -36,7 +36,7 @@
     .brand{font-family:"Playfair Display",serif;font-weight:700;letter-spacing:.4px;font-size:1.05rem;white-space:nowrap}
     .nav-links{display:none;gap:16px}
     .cta{display:none;gap:10px}
-    .btn{display:inline-block;border-radius:999px;border:1px solid var(--line);padding:10px 14px;background:#1d1813;box-shadow:var(--shadow);font-weight:700}
+    .btn{display:inline-block;border-radius:999px;border:1px solid var(--line);padding:10px 14px;background:#1d1813;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.1);font-weight:700;text-shadow:0 1px 1px rgba(0,0,0,.4)}
     .btn.primary{background:linear-gradient(180deg,#f0caa4,#d79a63);color:#2b2219;border:none}
     .burger{display:inline-flex;flex-direction:column;gap:4px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:#1b1713}
     .burger span{width:22px;height:2px;background:#f8f5f1;display:block}
@@ -74,7 +74,7 @@
     /* ===== PORTFOLIO (stable grid) ===== */
     .toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
     .filters{display:flex;gap:8px;flex-wrap:wrap}
-    .chip{padding:9px 12px;border-radius:999px;border:1px solid var(--line);background:#1a1612;color:#f7efe5;font-weight:700}
+    .chip{padding:9px 12px;border-radius:999px;border:1px solid var(--line);background:#1a1612;color:#f7efe5;font-weight:700;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.1);text-shadow:0 1px 1px rgba(0,0,0,.4)}
     .chip.active{border-color:var(--amber);color:#2b2219;background:linear-gradient(180deg,#f0caa4,#d79a63)}
     .grid-photos{display:grid;grid-template-columns:1fr;gap:12px}
     @media(min-width:520px){.grid-photos{grid-template-columns:1fr 1fr}}

@@ -1,0 +1,9 @@
+{
+  "name": "whispersph",
+  "version": "1.0.0",
+  "description": "Photography portfolio site",
+  "scripts": {
+    "test": "echo 'No tests specified'"
+  },
+  "license": "MIT"
+}
